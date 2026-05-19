@@ -1,0 +1,34 @@
+{
+  "empresa": "PetroBrasil Extração S.A.",
+  "unidade_producao": "barris (bbl)",
+  "moeda": "BRL",
+  "periodo_meses": 12,
+  "data_inicio": "2025-05",
+  "fonte_uniforme": {
+    "descricao": "parametros.json + distribuicoes.py + calcular_mes()",
+    "seed": 42
+  },
+  "parametros_base": {
+    "producao_diaria_media_bbl": 12500,
+    "preco_petroleo_usd_bbl": 78.5,
+    "cambio_usd_brl": 5.12,
+    "custo_operacional_usd_bbl": 18.0,
+    "impostos_receita_pct": 0.34,
+    "dias_uteis_mes": 30
+  },
+  "sazonalidade_producao": {
+    "ativo": true,
+    "amplitude_pct": 0.02
+  },
+  "monte_carlo": {
+    "simulacoes": 100000,
+    "simulacoes_referencia_comparacao": 10000,
+    "horizonte_meses": 12,
+    "distribuicoes": {
+      "producao_diaria_bbl": {"tipo": "normal", "media": 12500, "desvio": 1100},
+      "preco_usd_bbl": {"tipo": "lognormal", "media": 78.5, "desvio_pct": 0.15},
+      "cambio_usd_brl": {"tipo": "normal", "media": 5.12, "desvio": 0.28},
+      "custo_usd_bbl": {"tipo": "triangular", "min": 15.0, "moda": 18.0, "max": 24.0}
+    }
+  }
+}
